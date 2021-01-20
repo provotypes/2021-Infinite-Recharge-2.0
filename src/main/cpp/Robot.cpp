@@ -12,7 +12,19 @@ void Robot::RobotInit() {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+    m_leftLeadMotor.RestoreFactoryDefaults();
+    m_rightLeadMotor.RestoreFactoryDefaults();
+    m_leftFollowMotor.RestoreFactoryDefaults();
+    m_rightFollowMotor.RestoreFactoryDefaults();
+    m_leftFollowMotor.Follow(m_leftLeadMotor);
+    m_rightFollowMotor.Follow(m_rightLeadMotor);
+
 }
+  void Robot::TeleopPeriodic() {
+    // Drive with arcade style
+    m_robotDrive.ArcadeDrive(-m_stick.GetY(), m_stick.GetX());
+  }
+
 
 /**
  * This function is called every robot packet, no matter the mode. Use
@@ -58,7 +70,7 @@ void Robot::AutonomousPeriodic() {
 
 void Robot::TeleopInit() {}
 
-void Robot::TeleopPeriodic() {}
+// void Robot::TeleopPeriodic() {}
 
 void Robot::DisabledInit() {}
 
