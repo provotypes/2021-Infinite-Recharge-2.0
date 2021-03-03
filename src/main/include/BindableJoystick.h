@@ -1,11 +1,11 @@
 #pragma once
 
+#include <frc/Joystick.h>
 
 #include <utility>
-
 #include <vector>
 
-class BindableJoystick {
+class BindableJoystick : public frc::Joystick {
 private:
     typedef void(*Runnable)();
 	typedef bool(*BoolSupplier)();
@@ -15,6 +15,8 @@ private:
 
 
 public:
+
+	BindableJoystick(int port) : Joystick(port) {}
 
 	void bind(BoolSupplier condition, Runnable action);
 

@@ -2,29 +2,30 @@
 #include <frc/smartdashboard/smartdashboard.h>
 #include "rev/CANSparkMax.h"
 #include "rev/CANEncoder.h"
-#include <DifferentialDrive.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/SpeedControllerGroup.h>
 
-class Drivetrain : public DifferentialDrive {
+class Drivetrain : public frc::DifferentialDrive {
     private:
     
     // Declaring CAN Encoders 
-        CANEncoder frontLeftEncoder;
-        CANEncoder rearLeftEncoder;
-        CANEncoder frontRightEncoder;
-        CANEncoder rearRightEncoder;
+        rev::CANEncoder frontLeftEncoder;
+        rev::CANEncoder rearLeftEncoder;
+        rev::CANEncoder frontRightEncoder;
+        rev::CANEncoder rearRightEncoder;
 
     // Declaring CAN Spark Max Motor Controllers
-        CANSparkMax frontLeft;
-        CANSparkMax rearLeft;
-        CANSparkMax frontRight;
-        CANSparkMax rearLeft;
+        rev::CANSparkMax frontLeft;
+        rev::CANSparkMax rearLeft;
+        rev::CANSparkMax frontRight;
+        rev::CANSparkMax rearReft;
 
     // Declaring the Speed Controller Groups
-        SpeedControllerGroup leftGroup;
-        SpeedControllerGroup rightGroup;
+        frc::SpeedControllerGroup leftGroup;
+        frc::SpeedControllerGroup rightGroup;
     
     // Singleton Instance
-        Drivetrain instance;
+        Drivetrain* instance;
     
     // Private Constructor
         Drivetrain();
