@@ -1,13 +1,12 @@
-
-#include <frc/smartdashboard/smartdashboard.h>
+// #include <frc/smartdashboard/smartdashboard.h>
 #include "rev/CANSparkMax.h"
 #include "rev/CANEncoder.h"
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/SpeedControllerGroup.h>
+#include <cmath>
 
 class Drivetrain : public frc::DifferentialDrive {
     private:
-    
     // Declaring CAN Encoders 
         rev::CANEncoder frontLeftEncoder;
         rev::CANEncoder rearLeftEncoder;
@@ -18,7 +17,7 @@ class Drivetrain : public frc::DifferentialDrive {
         rev::CANSparkMax frontLeft;
         rev::CANSparkMax rearLeft;
         rev::CANSparkMax frontRight;
-        rev::CANSparkMax rearReft;
+        rev::CANSparkMax rearRight;
 
     // Declaring the Speed Controller Groups
         frc::SpeedControllerGroup leftGroup;
@@ -30,14 +29,12 @@ class Drivetrain : public frc::DifferentialDrive {
     // Private Constructor
         Drivetrain();
 
-
     public:
-    
     // Declaring the calibrated distance per motor rotation 
-        const double DISTANCE_PER_ROTATION;
+        const static double DISTANCE_PER_ROTATION = 1.0/8.0 * 6.1 * M_PI;
     
-    
+        Drivetrain getInstance();
 
-
+        void setLeftRightDriveSpeed(double left, double right);
 
 };
