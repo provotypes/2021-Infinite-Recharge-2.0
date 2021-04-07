@@ -1,9 +1,8 @@
-#ifndef DRIVETRAIN_H
-#define DRIVETRAIN_H
+
 
 #include "Drivetrain.h"
 
-// Using intializer lists for the motors, speed controllers, and encoders.
+// Using initalizer lists for the motors, speed controllers, and encoders.
 Drivetrain::Drivetrain() : frontLeft(3, rev::CANSparkMaxLowLevel::MotorType::kBrushless),
                            rearLeft(2, rev::CANSparkMaxLowLevel::MotorType::kBrushless),
                            frontRight(4, rev::CANSparkMaxLowLevel::MotorType::kBrushless),
@@ -20,12 +19,11 @@ Drivetrain::Drivetrain() : frontLeft(3, rev::CANSparkMaxLowLevel::MotorType::kBr
                            rightGroup(frontRight, rearRight),
                         
                            DifferentialDrive(leftGroup, rightGroup) {
-
-
-    
-      
-
 }
 
-#endif
+Drivetrain &Drivetrain::getInstance() {
+   static Drivetrain instance;
+   return instance;
+} 
+
 
